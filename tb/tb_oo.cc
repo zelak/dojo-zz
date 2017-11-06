@@ -11,29 +11,51 @@ using std::map;
 using std::cout;
 using std::endl;
 using std::rand;
+using std::move;
 using std::srand;
 using std::vector;
 
+template<typename T>
+vector<T> randomize(const int size, const int random_max)
+{
+    vector<T> vec(size);
+    srand(std::time(0));    
+    for (auto it = vec.begin(); it != vec.end(); ++it) {
+        *it = rand()%random_max;
+    }
+    return move(vec);
+}
+
+template<typename T>
+void print_values(const T& value)
+{
+    for (auto v : value) {
+        cout << v << " ";
+    }
+    cout << endl;
+}
+
+template<typename T>
+void print_map_values(const T& value)
+{
+    for (auto it = value.begin(); it != value.end(); ++it) {
+        cout << it->first << " " << it->second << " | ";
+    }
+    cout << endl;
+}
+
 int main (int argc, char ** argv)
 {
-    vector<int> input(50000);
-    srand(std::time(0));
+    auto input = randomize<int>(10, 5);
     map<int,int> output;
 
-    for (auto it = input.begin(); it != input.end(); ++it) {
-        *it = rand()%256;
-        cout << *it << " ";
-    }
-
-    cout << endl;
+    print_values<vector<int>>(input);
 
     for (auto n : input) {
         output[n] += 1;
     }
 
-    for (auto it = output.begin(); it != output.end(); ++it) {
-        cout << it->first << " "<<it->second << " | ";
-    }
-    cout << endl;
+    print_map_values<map<int,int>>(output);
+
     return 0;
 }
