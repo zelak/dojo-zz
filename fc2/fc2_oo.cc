@@ -21,11 +21,13 @@ For example, if we were trying to find the 7 letter string where hash(the_string
 */
 
 #include <string>
+#include <vector>
 #include <iostream>
 
 using std::cout;
 using std::endl;
 using std::string;
+using std::vector;
 
 static int8_t hash_c1   = 7;
 static int8_t hash_c2   = 37;
@@ -42,7 +44,34 @@ int64_t hash(string s)
 
 string reverse_hash(int64_t value)
 {
-    return "";
+    vector<int64_t> vHash;
+    string unhashedString;
+
+    unhashedString.clear();
+
+    // populate the vector
+    while (value > hash_c1) {
+        vHash.push_back(value);
+        value = value / hash_c2;
+    }
+
+    // get first letter
+    int index = 0;
+    int64_t last = vHash.back();
+    vHash.pop_back();
+    index = last - (hash_c1 * hash_c2);
+    unhashedString = g_letters[index];
+
+    // get next letters
+    while (vHash.size() > 0) {
+        int64_t last2 = vHash.back();
+        vHash.pop_back();
+        index = last2 - (last * hash_c2);
+        last = last2;
+        unhashedString += g_letters[index];
+    }
+
+    return unhashedString;
 }
 
 int main (int argc, char ** argv)
