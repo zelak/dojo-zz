@@ -19,56 +19,47 @@ Int64 hash (String s) {
 }
 For example, if we were trying to find the 7 letter string where hash(the_string) was 680131659347, the answer would be "leepadg".)
 */
-
+#include <list>
 #include <string>
-#include <vector>
 #include <iostream>
 
 using std::cout;
 using std::endl;
 using std::string;
-using std::vector;
+using std::list;
 
-static int8_t hash_c1   = 7;
-static int8_t hash_c2   = 37;
+static int8_t constHash1 = 7;
+static int8_t constHash2 = 37;
 static string g_letters = "acdegilmnoprstuw";
 
 int64_t hash(string s)
 {
-    int64_t h = hash_c1;
+    int64_t h = constHash1;
     for (auto c : s) {
-        h = (h * hash_c2 + g_letters.find(c));
+        h = (h * constHash2 + g_letters.find(c));
     }
     return h;
 }
 
-string reverse_hash(int64_t value)
+string unhash(int64_t hashValue)
 {
-    vector<int64_t> vHash;
     string unhashedString;
+    list<int64_t> unhashValueList;
 
     unhashedString.clear();
 
-    // populate the vector
-    while (value > hash_c1) {
-        vHash.push_back(value);
-        value = value / hash_c2;
+    // populate the list
+    while (hashValue > constHash1) {
+        unhashValueList.push_front(hashValue);
+        hashValue = hashValue / constHash2;
     }
 
-    // get first letter
-    int index = 0;
-    int64_t last = vHash.back();
-    vHash.pop_back();
-    index = last - (hash_c1 * hash_c2);
-    unhashedString = g_letters[index];
-
-    // get next letters
-    while (vHash.size() > 0) {
-        int64_t last2 = vHash.back();
-        vHash.pop_back();
-        index = last2 - (last * hash_c2);
-        last = last2;
-        unhashedString += g_letters[index];
+    int64_t globalStringIndex = 0;
+    int64_t lastValue = constHash1;
+    for (auto unhashValue : unhashValueList) {
+        globalStringIndex = unhashValue - (lastValue * constHash2);
+        lastValue = unhashValue;
+        unhashedString += g_letters[globalStringIndex];
     }
 
     return unhashedString;
@@ -76,10 +67,11 @@ string reverse_hash(int64_t value)
 
 int main (int argc, char ** argv)
 {
-    uint64_t test_hash   = 680131659347;
-    string   test_string = "leepadg";
-    cout << "Testing hash and reverse hash" << endl << endl;
-    cout << "String: " << test_string << " Hash: " << test_hash << endl << endl;
+    int64_t test_hash   = 680131659347;
+    string  test_string = "leepadg";
+    cout << endl;
+    cout << "Testing hash and unhash" << endl;
+    cout << "String: " << test_string << " Hash: " << test_hash << endl;
 
     if (hash(test_string) == test_hash) {
         cout << "OK";
@@ -88,12 +80,13 @@ int main (int argc, char ** argv)
     }
     cout << " - Hash method!" << endl;
 
-    if (reverse_hash(test_hash).compare(test_string) == 0) {
+    if (unhash(test_hash).compare(test_string) == 0) {
         cout << "OK";
     } else {
         cout << "NOK";
     }
-    cout << " - Reverse method!" << endl;
+    cout << " - Unhash method!" << endl;
 
+    cout << endl;
     return 0;
 }
