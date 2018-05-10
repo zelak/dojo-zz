@@ -6,3 +6,8 @@ cmake_install.cmake
 fc_oo
 tb_oo
 fc2_oo
+.DS_Store
+*.png
+*.php
+cci1_1
+cci1_2
