@@ -19,3 +19,13 @@ project(${PROJECT_NAME})
 SET(CMAKE_CXX_FLAGS "-std=c++11")
 
 add_executable(${PROJECT_NAME} cci1_2.cc)
+
+### Exercise 1.3
+# project wide definitions
+set(PROJECT_NAME cci1_3)
+project(${PROJECT_NAME})
+
+# Enable C++11 features
+SET(CMAKE_CXX_FLAGS "-std=c++11")
+
+add_executable(${PROJECT_NAME} cci1_3.cc)
