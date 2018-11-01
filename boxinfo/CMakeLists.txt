@@ -9,4 +9,4 @@ subdirs(unit)
 SET(CMAKE_CXX_FLAGS "-std=c++11")
 
 # Unit test
-add_executable(${PROJECT_NAME} boxinfo_entry.cc boxinfo_manager.cc boxinfo.cc)
+add_executable(${PROJECT_NAME} boxinfo_entry.cc boxinfo_manager.cc boxinfo.cc main.cc)
