@@ -9,7 +9,7 @@ link_directories(${boxinfo_SOURCE_DIR})
 
 set(PROJECT_NAME test_boxinfo)
 project(${PROJECT_NAME})
-add_executable(${PROJECT_NAME} ../boxinfo.cc test_boxinfo.cc)
+add_executable(${PROJECT_NAME} ../boxinfo_arris_entry.cc ../boxinfo_entry.cc ../boxinfo_manager.cc ../boxinfo.cc test_boxinfo.cc)
 
 ###############################
 # unit test - boxinfo manager #
@@ -17,4 +17,4 @@ add_executable(${PROJECT_NAME} ../boxinfo.cc test_boxinfo.cc)
 
 set(PROJECT_NAME test_boxinfo_manager)
 project(${PROJECT_NAME})
-add_executable(${PROJECT_NAME} ../boxinfo_entry.cc ../boxinfo_manager.cc test_boxinfo_manager.cc)
+add_executable(${PROJECT_NAME} ../boxinfo_arris_entry.cc ../boxinfo_entry.cc ../boxinfo_manager.cc test_boxinfo_manager.cc)

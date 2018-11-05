@@ -5,15 +5,22 @@
 using std::cout;
 using std::endl;
 
-BoxinfoEntry::BoxinfoEntry(string path, int tlfkey)
+BoxinfoEntry::BoxinfoEntry(string path, mode_t mode, size_t nlink,
+                           size_t size, size_t offset, int tlfkey,
+                           string rdname, string wrname)
+    : m_path(path),
+      m_mode(mode),
+      m_nlink(nlink),
+      m_size(size),
+      m_offset(offset),
+      m_tlfkey(tlfkey),
+      m_rdname(rdname),
+      m_wrname(wrname)
 {
-    m_path = path;
-    m_tlfkey = tlfkey;
 }
 
 BoxinfoEntry::~BoxinfoEntry()
 {
-
 }
 
 string BoxinfoEntry::path()
@@ -29,6 +36,11 @@ mode_t BoxinfoEntry::mode()
 size_t BoxinfoEntry::nlink()
 {
     return m_nlink;
+}
+
+size_t BoxinfoEntry::size()
+{
+    return m_size;
 }
 
 size_t BoxinfoEntry::offset()
@@ -49,16 +61,4 @@ string BoxinfoEntry::rdname()
 string BoxinfoEntry::wrname()
 {
     return m_wrname;
-}
-
-int BoxinfoEntry::read(char *buf, size_t size, off_t offset)
-{
-    cout << __func__ << "(): Called!" << endl;
-    return 0;
-}
-
-int BoxinfoEntry::write(char *buf, size_t size, off_t offset)
-{
-    cout << __func__ << "(): Called!" << endl;
-    return 0;
 }
