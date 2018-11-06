@@ -23,8 +23,8 @@ public:
     string wrname();
 
     // TODO: rmeove return 0 and make it pure virtual
-    virtual int read(char *buf, size_t size, off_t offset) { return 0; };
-    virtual int write(char *buf, size_t size, off_t offset) {return 0; };
+    virtual int read(const char *buf, size_t size, off_t offset) { return 0; };
+    virtual int write(const char *buf, size_t size, off_t offset) {return 0; };
 
 private:
     string m_path;

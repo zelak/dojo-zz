@@ -16,12 +16,14 @@ BoxinfoArrisEntry::~BoxinfoArrisEntry()
 {
 }
 
-int BoxinfoArrisEntry::read(char *buf, size_t size, off_t offset)
+int BoxinfoArrisEntry::read(const char *buf, size_t size, off_t offset)
 {
+    cout << __PRETTY_FUNCTION__ << endl;
     return 0;
 }
 
-int BoxinfoArrisEntry::write(char *buf, size_t size, off_t offset)
+int BoxinfoArrisEntry::write(const char *buf, size_t size, off_t offset)
 {
+    cout << __PRETTY_FUNCTION__ << endl;
     return 0;
 }
