@@ -13,9 +13,11 @@ public:
     ~Boxinfo();
 
     void init();
-    void initArrisEntries();
 
 private:
+    void initTlfEntries();
+    void initArrisEntries();
+
     BoxinfoManager *m_manager;
 };
 

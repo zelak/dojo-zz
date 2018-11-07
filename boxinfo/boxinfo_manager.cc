@@ -9,6 +9,9 @@ BoxinfoManager::BoxinfoManager()
 
 BoxinfoManager::~BoxinfoManager()
 {
+    if (size() > 0) {
+        // TODO: delete each entry before deleting manager
+    }
 }
 
 void BoxinfoManager::insert(BoxinfoEntry *entry)
