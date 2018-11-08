@@ -14,8 +14,10 @@ public:
                     string rdname, string wrname);
     ~BoxinfoTlfEntry();
 
-    int read( char *buf, size_t size, off_t offset) override;
+    int read(char *buf, size_t size, off_t offset) override;
     int write(const char *buf, size_t size, off_t offset) override;
+
+    int tlfReadInfo(char *buf, size_t size, off_t offset);
 };
 
 #endif // BOXINFO_TLF_ENTRY_H

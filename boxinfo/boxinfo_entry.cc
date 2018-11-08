@@ -1,9 +1,4 @@
-#include <iostream>
-
 #include "boxinfo_entry.h"
-
-using std::cout;
-using std::endl;
 
 BoxinfoEntry::BoxinfoEntry(string path, mode_t mode, size_t nlink,
                            size_t size, size_t offset, int tlfkey,

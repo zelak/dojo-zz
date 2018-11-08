@@ -15,7 +15,6 @@ static struct fuse_operations operations;
 
 static void* do_init(struct fuse_conn_info *conn)
 {
-    cout << __FUNCTION__ << endl;
     return NULL;
 }
 

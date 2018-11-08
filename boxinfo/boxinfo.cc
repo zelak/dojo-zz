@@ -1,20 +1,16 @@
+#include <cassert>
 #include <sys/stat.h>
-#include <iostream>
-#include <string.h>
-#include <stdlib.h>
 
 #include "boxinfo.h"
 #include "boxinfo_manager.h"
 #include "boxinfo_arris_entry.h"
 #include "boxinfo_tlf_entry.h"
+#include "boxinfo_casn_entry.h"
+#include "boxinfo_csc_entry.h"
 
 extern "C" {
 #include "TLFBootloaderAPI.h"
 }
-
-
-using std::cout;
-using std::endl;
 
 Boxinfo::Boxinfo(BoxinfoManager *manager)
     : m_manager(manager)
@@ -31,8 +27,15 @@ void Boxinfo::init()
         return;
     }
 
+    initTlfLib();
     initTlfEntries();
     // initArrisEntries();
+}
+
+void Boxinfo::initTlfLib()
+{
+    tlf_result_t res = tlf_init();
+    assert(res == TLF_OK);
 }
 
 void Boxinfo::initTlfEntries()
@@ -66,6 +69,20 @@ void Boxinfo::initTlfEntries()
                                           TLV_STBINFO_WIFI_MAC_ADDRESS, "", ""));
     m_manager->insert(new BoxinfoTlfEntry("/HpnaMacAddress", S_IFREG | 0444, 1, 255, 0,
                                           TLV_STBINFO_HPNA_MAC_ADDRESS, "", ""));
+    m_manager->insert(new BoxinfoTlfEntry("/Hdcp14Key", S_IFREG | 0444, 1, 1128, 0,
+                                          TLV_VARIABLE_HDCP14, "", ""));
+    m_manager->insert(new BoxinfoTlfEntry("/Hdcp22Key", S_IFREG | 0444,1, 1088, 20,
+                                          TLV_VARIABLE_HDCP22, "", ""));
+    m_manager->insert(new BoxinfoTlfEntry("/NetflixESN", S_IFREG | 0444, 1, 256, 0,
+                                          TLV_VARIABLE_NETFLIX_ESN, "", ""));
+    m_manager->insert(new BoxinfoTlfEntry("/NetflixDRM", S_IFREG | 0444, 1, 608, 0,
+                                          TLV_VARIABLE_NETFLIX_DRM_BIN, "", ""));
+
+    m_manager->insert(new BoxinfoCASNEntry("/CASN", S_IFREG | 0444, 1, 10, 0,
+                                           TLV_STBINFO_NAGRA_SERIAL_NUMBER, "", ""));
+
+    m_manager->insert(new BoxinfoCSCEntry("/CSC", S_IFREG | 0444, 1, 10, 0,
+                                          TLV_STBINFO_NAGRA_CSC_DATA, "", ""));
 }
 
 void Boxinfo::initArrisEntries()

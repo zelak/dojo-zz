@@ -2,7 +2,7 @@
 #define BOXINFO_ARRIS_ENTRY_H
 
 #include <string>
-#include  "boxinfo_entry.h"
+#include "boxinfo_entry.h"
 
 using std::string;
 

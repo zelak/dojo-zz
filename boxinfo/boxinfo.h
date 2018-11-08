@@ -1,9 +1,6 @@
 #ifndef BOXINFO_H
 #define BOXINFO_H
 
-#include <iostream>
-#include <fuse.h>
-
 class BoxinfoManager;
 
 class Boxinfo {
@@ -15,6 +12,7 @@ public:
     void init();
 
 private:
+    void initTlfLib();
     void initTlfEntries();
     void initArrisEntries();
 

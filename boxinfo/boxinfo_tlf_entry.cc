@@ -1,6 +1,6 @@
 #include <iostream>
 #include <algorithm>
-#include <string.h>
+#include <cstring>
 
 #include "boxinfo_tlf_entry.h"
 
@@ -8,8 +8,6 @@ extern "C" {
 #include "TLFBootloaderAPI.h"
 }
 
-using std::cout;
-using std::endl;
 using std::min;
 
 BoxinfoTlfEntry::BoxinfoTlfEntry(string path, mode_t mode, size_t nlink,
@@ -23,7 +21,7 @@ BoxinfoTlfEntry::~BoxinfoTlfEntry()
 {
 }
 
-int BoxinfoTlfEntry::read(char *buf, size_t size, off_t offset)
+int BoxinfoTlfEntry::tlfReadInfo(char *buf, size_t size, off_t offset)
 {
     char buffer[4096];
     tlf_tlv_t element;
@@ -40,6 +38,11 @@ int BoxinfoTlfEntry::read(char *buf, size_t size, off_t offset)
     }
 
     return res;
+}
+
+int BoxinfoTlfEntry::read(char *buf, size_t size, off_t offset)
+{
+    return tlfReadInfo(buf, size, offset);
 }
 
 int BoxinfoTlfEntry::write(const char *buf, size_t size, off_t offset)
