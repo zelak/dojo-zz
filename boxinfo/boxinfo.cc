@@ -87,7 +87,54 @@ void Boxinfo::initTlfEntries()
 
 void Boxinfo::initArrisEntries()
 {
-    m_manager->insert(new BoxinfoArrisEntry("/HttpAttempts", S_IFREG | 0444, 1, 256, 0, 0, "get-http-attempts", ""));
-    m_manager->insert(new BoxinfoArrisEntry("/HttpServer"  , S_IFREG | 0666, 1, 256, 0, 0, "get-http-server", "set-http-server"));
-    m_manager->insert(new BoxinfoArrisEntry("/HttpPort"    , S_IFREG | 0666, 1, 256, 0, 0, "get-http-port", "set-http-port"));
+    m_manager->insert(new BoxinfoArrisEntry("/HttpServer"  , S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-http-server", "set-http-server"));
+
+    m_manager->insert(new BoxinfoArrisEntry("/HttpPort"    , S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-http-port", "set-http-port"));
+
+    m_manager->insert(new BoxinfoArrisEntry("/Bootcast", S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-bootcast", "set-bootcast"));
+
+    m_manager->insert(new BoxinfoArrisEntry("/BootcastID", S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-bootcast-id", "set-bootcast-id"));
+
+    m_manager->insert(new BoxinfoArrisEntry("/BootOrder", S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-boot-order", "set-boot-order"));
+
+    m_manager->insert(new BoxinfoArrisEntry("/SplashOrder", S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-splash-order", "set-splash-order"));
+
+    m_manager->insert(new BoxinfoArrisEntry("/DirectDownloadBootImageUrl", S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-direct-download-boot-image-url", "set-direct-download-boot-image-url"));
+
+    m_manager->insert(new BoxinfoArrisEntry("/KernelFilename", S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-kernel-filename", "set-kernel-filename"));
+
+    m_manager->insert(new BoxinfoArrisEntry("/TftpServer", S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-tftp-server", "set-tftp-server"));
+
+    m_manager->insert(new BoxinfoArrisEntry("/TftpBlockSize", S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-tftp-block-size", "set-tftp-block-size"));
+
+    m_manager->insert(new BoxinfoArrisEntry("/WifiAuthentication", S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-wifi-authentication", "set-wifi-authentication"));
+
+    m_manager->insert(new BoxinfoArrisEntry("/WifiBSSID", S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-wifi-bss-id", "set-wifi-bss-id"));
+
+    m_manager->insert(new BoxinfoArrisEntry("/WifiEncryption", S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-wifi-encryption", "set-wifi-encryption"));
+
+    m_manager->insert(new BoxinfoArrisEntry("/WifiKey", S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-wifi-key", "set-wifi-key"));
+
+    m_manager->insert(new BoxinfoArrisEntry("/WifiRegulatoryDomain", S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-wifi-regulatory-domain", "set-wifi-regulatory-domain"));
+
+    m_manager->insert(new BoxinfoArrisEntry("/WifiSSID", S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-wifi-ssid", "set-wifi-ssid"));
+
+    m_manager->insert(new BoxinfoArrisEntry("/WifiWizardDisabled", S_IFREG | 0666, 1, 256, 0, 0,
+                                            "get-wifi-wizard-disabled", "set-wifi-wizard-disabled"));
 }

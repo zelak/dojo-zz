@@ -14,7 +14,7 @@ public:
                       string rdname, string wrname);
     ~BoxinfoArrisEntry();
 
-    int read( char *buf, size_t size, off_t offset) override;
+    int read(char *buf, size_t size, off_t offset) override;
     int write(const char *buf, size_t size, off_t offset) override;
 };
 
