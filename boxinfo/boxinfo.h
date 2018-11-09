@@ -12,9 +12,8 @@ public:
     void init();
 
 private:
-    void initTlfLib();
-    void initTlfEntries();
-    void initArrisEntries();
+    void initTlf();
+    void initArris();
 
     BoxinfoManager *m_manager;
 };

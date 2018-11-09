@@ -13,4 +13,4 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -DFUSE_USE_VERSION=26 -D_FILE
 link_libraries(fuse TLFBootloaderAPI)
 
 # boxinfo: main binary
-add_executable(${PROJECT_NAME} boxinfo_entry.cc boxinfo_casn_entry.cc boxinfo_csc_entry.cc boxinfo_tlf_entry.cc boxinfo_arris_entry.cc boxinfo_manager.cc boxinfo.cc main.cc)
+add_executable(${PROJECT_NAME} boxinfo_arris_write_strategy.cc boxinfo_arris_read_strategy.cc boxinfo_tlf_csc_read_strategy.cc boxinfo_tlf_read_strategy.cc boxinfo_tlf_casn_read_strategy.cc boxinfo_entry.cc boxinfo_manager.cc boxinfo.cc main.cc)

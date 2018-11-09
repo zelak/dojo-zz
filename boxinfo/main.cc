@@ -155,4 +155,6 @@ int main (int argc, char ** argv)
 
     cout << ">> Starting FUSE ..." << endl;
     return fuse_main(argc, argv, &operations, NULL);
+
+    return 0;
 }

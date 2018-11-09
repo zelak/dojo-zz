@@ -5,12 +5,18 @@
 
 using std::string;
 
+class BoxinfoReadStrategy;
+class BoxinfoWriteStrategy;
+
 class BoxinfoEntry {
 
 public:
     BoxinfoEntry(string path, mode_t mode, size_t nlink,
                  size_t size, size_t offset, int tlfkey,
-                 string rdname, string wrname);
+                 string rdname, string wrname,
+                 BoxinfoReadStrategy *read,
+                 BoxinfoWriteStrategy *write);
+
     virtual ~BoxinfoEntry();
 
     string path();
@@ -22,9 +28,8 @@ public:
     string rdname();
     string wrname();
 
-    // TODO: rmeove return 0 and make it pure virtual
-    virtual int read( char *buf, size_t size, off_t offset) { return 0; };
-    virtual int write(const char *buf, size_t size, off_t offset) {return 0; };
+    int read(char *buf, size_t size, off_t offset);
+    int write(const char *buf, size_t size, off_t offset);
 
 private:
     string m_path;
@@ -35,6 +40,9 @@ private:
     int    m_tlfkey;
     string m_rdname;
     string m_wrname;
+
+    BoxinfoReadStrategy * m_read;
+    BoxinfoWriteStrategy * m_write;
 };
 
 #endif // BOXINFO_ENTRY_H
