@@ -8,7 +8,6 @@
 
 #include "../boxinfo_manager.h"
 #include "../boxinfo_entry.h"
-#include "../boxinfo_arris_entry.h"
 
 using std::cout;
 using std::endl;
@@ -16,8 +15,8 @@ using std::endl;
 int main (int argc, char ** argv)
 {
     BoxinfoManager *manager = new BoxinfoManager();
-    BoxinfoArrisEntry *entry  = new BoxinfoArrisEntry("/HttpServer" , 0666, 1, 256, 0, 0, "get-http-server", "set-http-server");
-    BoxinfoArrisEntry *entry2 = new BoxinfoArrisEntry("/HttpPort"   , 0666, 1, 256, 0, 0, "get-http-port", "set-http-port");
+    BoxinfoEntry *entry  = new BoxinfoEntry("/HttpServer" , 0666, 1, 256, 0, 0, "get-http-server", "set-http-server", NULL, NULL);
+    BoxinfoEntry *entry2 = new BoxinfoEntry("/HttpPort"   , 0666, 1, 256, 0, 0, "get-http-port", "set-http-port", NULL, NULL);
 
     // insert first entry
     cout << "Test manager: insert a new entry with path: " << entry->path() << " and key: " << entry->tlfkey() << endl;

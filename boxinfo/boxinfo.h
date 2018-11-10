@@ -17,6 +17,8 @@ public:
 
     void set(BoxinfoVendor *vendor);
 
+    int size();
+
 private:
     list<BoxinfoVendor*> m_vendors;
 };

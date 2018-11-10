@@ -13,3 +13,8 @@ void Boxinfo::set(BoxinfoVendor *vendor)
 {
     m_vendors.push_back(vendor);
 }
+
+int Boxinfo::size()
+{
+    return m_vendors.size();
+}
