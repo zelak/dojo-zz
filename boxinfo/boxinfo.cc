@@ -1,6 +1,17 @@
 #include "boxinfo.h"
 #include "boxinfo_vendor.h"
 
+Boxinfo::Boxinfo()
+{
+}
+
+Boxinfo::~Boxinfo()
+{
+    for(auto vendor : m_vendors) {
+        delete vendor;
+    }
+}
+
 void Boxinfo::init()
 {
     // init registered vendors

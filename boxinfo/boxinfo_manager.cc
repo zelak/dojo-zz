@@ -1,9 +1,6 @@
-#include <iostream>
 #include "boxinfo_manager.h"
 #include "boxinfo_entry.h"
 
-using std::cout;
-using std::endl;
 using std::pair;
 
 using BoxinfoMap = map<string, BoxinfoEntry*>;

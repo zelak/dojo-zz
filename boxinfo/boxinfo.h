@@ -10,8 +10,8 @@ class BoxinfoVendor;
 class Boxinfo {
 
 public:
-    Boxinfo() {}
-    ~Boxinfo() {}
+    Boxinfo();
+    ~Boxinfo();
 
     void init();
 
