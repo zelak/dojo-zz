@@ -1,7 +1,12 @@
+#include <iostream>
 #include "boxinfo_manager.h"
 #include "boxinfo_entry.h"
 
+using std::cout;
+using std::endl;
 using std::pair;
+
+using BoxinfoMap = map<string, BoxinfoEntry*>;
 
 BoxinfoManager::BoxinfoManager()
 {
@@ -9,13 +14,18 @@ BoxinfoManager::BoxinfoManager()
 
 BoxinfoManager::~BoxinfoManager()
 {
-    if (size() > 0) {
-        // TODO: delete each entry before deleting manager
+    // delete remaining entries in map
+    for (auto entry : m_entries) {
+        delete entry.second;
     }
 }
 
 void BoxinfoManager::insert(BoxinfoEntry *entry)
 {
+    if (entry == nullptr) {
+        return;
+    }
+
     m_entries.insert(pair<string, BoxinfoEntry*>(entry->path(), entry));
 }
 
@@ -26,7 +36,7 @@ int BoxinfoManager::size()
 
 BoxinfoEntry* BoxinfoManager::find(string key)
 {
-    map<string, BoxinfoEntry*>::iterator it;
+    BoxinfoMap::iterator it;
 
     it = m_entries.find(key);
 

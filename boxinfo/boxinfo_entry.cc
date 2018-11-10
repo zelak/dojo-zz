@@ -22,6 +22,13 @@ BoxinfoEntry::BoxinfoEntry(string path, mode_t mode, size_t nlink,
 
 BoxinfoEntry::~BoxinfoEntry()
 {
+    if (m_read) {
+        delete m_read;
+    }
+
+    if (m_write) {
+        delete m_write;
+    }
 }
 
 string BoxinfoEntry::path()

@@ -49,9 +49,11 @@ int main (int argc, char ** argv)
     assert(entry2->path() == entryResp->path());
     assert(entry2->tlfkey() == entryResp->tlfkey());
 
+    cout << "Test manager: trying to insert a NULL entry" << endl;
+    manager->insert(NULL);
+    assert(manager->size() == 2);
+
     delete manager;
-    delete entry;
-    delete entry2;
 
     return 0;
 }
