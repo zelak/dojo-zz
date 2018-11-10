@@ -15,18 +15,16 @@ endif()
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -DFUSE_USE_VERSION=26 -D_FILE_OFFSET_BITS=64 ${USE_FLAGS}")
 
-message( "${CMAKE_SYSTEM_NAME}" )
-
 # FUSE includes and library path for MACOSX
 if (${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
-    message ( "MACOSX: setting FUSE include and library path" )
+    message ( "-- MACOSX: setting FUSE include and library path" )
     include_directories(/usr/local/include/)
     link_directories(/usr/local/lib/)
 endif()
 
 # FUSE includes and library path for LINUX
 if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
-    message ( "LINUX/UNIX: setting FUSE include and library path" )
+    message ( "-- LINUX/UNIX: setting FUSE include and library path" )
 endif()
 
 link_libraries(fuse)
