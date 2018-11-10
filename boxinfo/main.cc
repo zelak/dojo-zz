@@ -2,6 +2,8 @@
 #include "boxinfo_entry.h"
 #include "boxinfo_manager.h"
 
+#include "boxinfo_zanon.h"
+
 #include <fuse.h>
 #include <iostream>
 #include <string.h>
@@ -146,7 +148,9 @@ int main (int argc, char ** argv)
 {
     cout << ">> Init Boxinfo modules" << endl;
     manager = new BoxinfoManager();
-    Boxinfo *boxinfo = new Boxinfo(manager);
+    Boxinfo *boxinfo = new Boxinfo();
+
+    boxinfo->set(new BoxinfoZanon(manager));
     boxinfo->init();
 
     cout << ">> Init FUSE operations" << endl;
@@ -155,6 +159,4 @@ int main (int argc, char ** argv)
 
     cout << ">> Starting FUSE ..." << endl;
     return fuse_main(argc, argv, &operations, NULL);
-
-    return 0;
 }

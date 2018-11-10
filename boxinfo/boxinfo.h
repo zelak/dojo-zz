@@ -1,21 +1,24 @@
-#ifndef BOXINFO_H
-#define BOXINFO_H
+#ifndef __BOXINFO_H__
+#define __BOXINFO_H__
 
-class BoxinfoManager;
+#include <list>
+
+using std::list;
+
+class BoxinfoVendor;
 
 class Boxinfo {
 
 public:
-    Boxinfo(BoxinfoManager *manager);
-    ~Boxinfo();
+    Boxinfo() {}
+    ~Boxinfo() {}
 
     void init();
 
-private:
-    void initTlf();
-    void initArris();
+    void set(BoxinfoVendor *vendor);
 
-    BoxinfoManager *m_manager;
+private:
+    list<BoxinfoVendor*> m_vendors;
 };
 
-#endif // BOXINFO_H
+#endif // __BOXINFO_H__
